@@ -1,6 +1,6 @@
 /* Temple · copia del iPhone: abre sin internet. Guarda la app en el teléfono y la actualiza sola cuando hay conexión. */
-const V='temple-gym-admin-1';
-const FILES=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png'];
+const V='temple-gym-admin-2';
+const FILES=['./','index.html','feedback.js','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
